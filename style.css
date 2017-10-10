@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    box-sizing: content-box;
+    width: 21cm;
+    height: 29.7cm;
+    /* border: 1px solid black; */
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1 {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    background-color: #2058b2;
+    color: #ffffff;
+}
+#sections {
+    display: flex;
+    flex-flow: row;
+    align-content: space-between;
+    background-color: #dae1ed;
+}
+#left, #right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#left > section, #right > section {
+    padding: 0.25em;
+    background-color: #dae1ed;
+}
+h2 {
+    font-size: 14px;
+    margin: 0;
+    background-color: #94b1e0;
+    padding: 0 0.25em;
+}
+h3 {
+    font-size: 12px;
+    margin: 0;
+    padding-left: 0.25em;
+    margin-top: 0.2em;
+}
+p {
+    font-size: 11px;
+    margin: 0.15em 0;
+    padding: 0 0.25em;
+}
+code {
+    display: block;
+    white-space: pre-wrap;
+    font-size: 11px;
+    background-color: #ffffff;
+    padding: 0.25em 0.4em;
+    line-height: 1.4em;
+    margin-top: 2px;
+    font-weight: bold;
+}
+.halved {
+    display: flex;
+    flex-direction: row;
+}
+.halved > div {
+    width: 50%;
+}
+.halved > div.left {
+    border-right: 1px solid #dae1ed;
+}
+.halved > div.right {
+    border-left: 1px solid #dae1ed;
+}
+comment {
+    color: green;
+    font-weight: normal;
+}
+keyword {
+    font-weight: bold;
+    color: darkblue;
+}
+string {
+    color: #b76507;
+    font-weight: normal;
+}
+var {
+    color: #268cd6;
+    font-style: normal;
+    font-weight: bold;
+}
+expr {
+    color: #777777;
+    font-weight: normal;
+}
+lit {
+    color: #6bad2d;
+    font-weight: normal;
+}
+func {
+    font-weight: normal;
+    color: #444444;
+    color: #9e0ba3;
+}
+class {
+    font-weight: normal;
+    color: #a0045d;
+}
+#left > section.author {
+    padding: 0.25em 0.5em 0.5em;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+}
+section.author img {
+    height: 14px;
+    vertical-align: -3px;
+    margin-right: 0.25em;
+}

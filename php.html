@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP Cheatsheet 1</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            box-sizing: content-box;
+            width: 21cm;
+            height: 29.7cm;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1 {
+            margin: 0;
+            font-size: 14px;
+            text-align: center;
+            background-color: #2058b2;
+            color: #ffffff;
+        }
+        #sections {
+            display: flex;
+            flex-flow: row;
+            align-content: space-between;
+            background-color: #dae1ed;
+        }
+        #left, #right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        #left > section, #right > section {
+            padding: 0.25em;
+            background-color: #dae1ed;
+        }
+        h2 {
+            font-size: 14px;
+            margin: 0;
+            background-color: #94b1e0;
+            padding: 0 0.25em;
+        }
+        h3 {
+            font-size: 12px;
+            margin: 0;
+            padding-left: 0.25em;
+            margin-top: 0.2em;
+        }
+        p {
+            font-size: 11px;
+            margin: 0.15em 0;
+            padding: 0 0.25em;
+        }
+        code {
+            display: block;
+            white-space: pre-wrap;
+            font-size: 11px;
+            background-color: #ffffff;
+            padding: 0.25em 0.4em;
+            line-height: 1.4em;
+            margin-top: 2px;
+            font-weight: bold;
+        }
+        .halved {
+            display: flex;
+            flex-direction: row;
+        }
+        .halved > div {
+            width: 50%;
+        }
+        .halved > div.left {
+            border-right: 1px solid #dae1ed;
+        }
+        .halved > div.right {
+            border-left: 1px solid #dae1ed;
+        }
+        comment {
+            color: green;
+            font-weight: normal;
+        }
+        keyword {
+            font-weight: bold;
+            color: darkblue;
+        }
+        string {
+            color: #b76507;
+            font-weight: normal;
+        }
+        var {
+            color: #268cd6;
+            font-style: normal;
+            font-weight: bold;
+        }
+        expr {
+            color: #777777;
+            font-weight: normal;
+        }
+        lit {
+            color: #6bad2d;
+            font-weight: normal;
+        }
+        func {
+            font-weight: normal;
+            color: #444444;
+            color: #9e0ba3;
+        }
+        class {
+            font-weight: normal;
+            color: #a0045d;
+        }
+        #left > section.author {
+            padding: 0.25em 0.5em 0.5em;
+            font-size: 11px;
+            line-height: 14px;
+            text-align: center;
+        }
+        section.author img {
+            height: 14px;
+            vertical-align: -3px;
+            margin-right: 0.25em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>PHP syntax cheatsheet #1</h1>
+
+<div id="sections">
+
+    <div id="left">
+        <section>
+            <h2>literal values</h2>
+            <p>number, string, boolean, float, array, object, null</p>
+            <code><lit>123</lit>; <string>'abc'</string>; <keyword>true</keyword>; <keyword>false</keyword>; <lit>45.6</lit>; [<lit>1</lit>,<lit>2</lit>]; <keyword>new</keyword> <class>Foo</class>; <keyword>null</keyword>;</code>
+            <div class="halved">
+                <div class="left">
+                    <h3>values that equal boolean <keyword>false</keyword>:</h3>
+                    <code><keyword>false</keyword>, <lit>0</lit>, <keyword>null</keyword>, <string>''</string>, []</code>
+                </div>
+                <div class="right">
+                    <h3>values that equal boolean <keyword>true</keyword>:</h3>
+                    <code><keyword>true</keyword>, <lit>1</lit>, <lit>-1</lit>, <lit>321</lit>, <string>'abc'</string>, [<lit>0</lit>]</code>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section>
+            <h2>operators</h2>
+            <p>form expressions together with their operands</p>
+            <div class="halved">
+                <div class="left">
+                    <h3>arithmetical operators</h3>
+                    <code>+  -  *  /  %  (  )  .  ++  --</code>
+                </div>
+                <div class="right">
+                    <h3>assignment operators</h3>
+                    <code>=  +=  -=  *=  /=  %=  .=</code>
+                </div>
+            </div>
+            <div class="halved">
+                <div class="left">
+                    <h3>comparison operators</h3>
+                    <code>==  !=  <  >  <=  >=  ===</code>
+                </div>
+                <div class="right">
+                    <h3>logical operators</h3>
+                    <code>&&  ||  AND  OR  !</code>
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <h2>expressions</h2>
+            <p>combination of one or more values, constants, variables, operators, and functions that are evaluated to produce another value</p>
+            <h3>examples</h3>
+            <code><lit>1</lit>; <lit>1</lit>+<lit>1</lit>; <var>$foo</var>; <var>$foo</var>+<lit>1</lit>; (<var>$foo</var>+<lit>1</lit>)*<var>$bar</var>; (<var>$foo</var>+<lit>1</lit>)*<var>$bar</var>+<func>baz</func>();</code>
+        </section>
+
+        <section>
+            <h2>conditions</h2>
+            <p>make decisions to decide what code (if any) should be run</p>
+            <code><keyword>if</keyword>(<expr>expression</expr>) {
+                <comment>// do this if expression is true</comment>
+                }</code>
+            <code><keyword>if</keyword>(<expr>expression</expr>) {
+                <comment>// do this if expression is true</comment>
+                } <keyword>else</keyword> {
+                <comment>// otherwise do this</comment>
+                }</code>
+            <code><keyword>if</keyword>(<expr>expression1</expr>) {
+                <comment>// do this if expression1 is true</comment>
+                } <keyword>elseif</keyword>(<expr>expression2</expr>) {
+                <comment>// do this if expression1 is false but expression2 is true</comment>
+                } <keyword>else</keyword> {
+                <comment>// otherwise do this</comment>
+                }</code>
+        </section>
+
+        <section>
+            <h2>loops</h2>
+            <p>sequence of statements which is specified once but which may be carried out several times in succession</p>
+            <h3>while, do ... while</h3>
+            <code><keyword>while</keyword>(<expr>expression</expr>) {
+                <comment>// do this while expression is true</comment>
+                }</code>
+            <code><keyword>do</keyword> {
+                <comment>// do this while expression is true, but at least once</comment>
+                } <keyword>while</keyword>(<expr>expression</expr>);</code>
+            <h3>for</h3>
+            <code><keyword>for</keyword>(<expr>initialization</expr>; <expr>expression</expr>; <expr>change</expr>) {
+                <comment>// do this while expression is true</comment>
+                <comment>// at the beginning initialization is executed</comment>
+                <comment>// after every iteration change is executed</comment>
+                }</code>
+            <h3>foreach (where <var>$foo</var> is an array)</h3>
+            <code><keyword>foreach</keyword>(<var>$foo</var> <keyword>as</keyword> <var>$bar</var>) {
+                <comment>// do this for each item in $array</comment>
+                <comment>// $bar contains the value of the current item</comment>
+                }</code>
+            <code><keyword>foreach</keyword>(<var>$foo</var> <keyword>as</keyword> <var>$baz</var> => <var>$bar</var>) {
+                <comment>// $baz contains the value of the current key</comment>
+                <comment>// $bar contains the value of the current item</comment>
+                }</code>
+        </section>
+
+        <section class="author">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAOCAYAAABO3B6yAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjI1MkQ1RTY5RjE2MTFFNzk3OTE4QUQ0MDZCNjM4NUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjI1MkQ1RTc5RjE2MTFFNzk3OTE4QUQ0MDZCNjM4NUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMjUyRDVFNDlGMTYxMUU3OTc5MThBRDQwNkI2Mzg1QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMjUyRDVFNTlGMTYxMUU3OTc5MThBRDQwNkI2Mzg1QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjglfaAAAAILSURBVHjarJVPSFRBHMffLKELkeIiJB1S8Sit2qVTHjzIKkHkQSjS0hK8KJskgUgJ2pYEQdGpApUQKfBfQdCho9tu2CHpkga7BEq3TVEQL8/PPGZlmJ3XLrYDn5l985ud73d/v5m3wnVdp9DWvpAuY7gK1+HJx46a915AiCD9JRiHfZDzU47rpvPteaJA4fMMvXALgmp6UltyGR5BrXpuhPsYe8cYw8j3YxlA+Ir6VfVGaB2+ac8pSGgGsq3TQ4gVxn6M/DA1hFkCREsYRmAITll8/YQW0r+VExEiRD8I97RM6e0LdGPkV44BJfwQopbMyEVv4RnCibw1EyJAf02V6YxlxWtM9B0ZQHxAbi6fjYW/vRo6zizCu85xmhAR+sfQYET24KZom0894MOYFtiGz/IkIzrjFKsJcZY+CVXabEam+rax9C/0IL5TRPFy+mYoNSJxWatRdXezrVpmgbJMw7n/FG6GOfWj3kCFFl2U1zd7BmQmZtTBMdtXuENG4gWKnlbvjLsQ8tmvj0O4lnMNMVKtnF60fHFTHiaMvPARluldgoiPtWUYRnjjn+8BZeQCwyuwleAAXso3HWYySrxJXeE2y/V97t0C1/1jcxWwTbJxEsLq4HwywiXq4NZpc/J/oFV7XoUbcBLhqJ+4bwYsGQmrusr0VsJTDMa09E/Qd8EHmEZwtdBzeijAAI0Zp5zzT1DuAAAAAElFTkSuQmCC" > &copy; 2017 Coding Bootcamp Praha
+        </section>
+    </div>
+    <div id="right">
+
+        <section>
+            <h2>variables</h2>
+            <p>Hold values. Are used just like the values they hold.</p>
+            <h3>create variable</h3>
+            <code><var>$foo</var>;
+                <var>$foo</var> = <lit>123</lit>;</code>
+            <h3>use variable</h3>
+            <code><var>$bar</var> = <lit>1</lit> + <var>$foo</var>;</code>
+        </section>
+        <section>
+            <h2>functions</h2>
+            <p>sequence of program instructions that perform a specific task, packaged as a unit</p>
+            <h3>function declaration</h3>
+            <code><keyword>function</keyword> <func>foo</func>() {
+                <comment>// do this whenever the function is called</comment>
+                }</code>
+            <code><keyword>function</keyword> <func>bar</func>(<var>$param1</var>, <var>$param2</var>) {
+                <comment>// variables $param1 and $param2 are available</comment>
+                }</code>
+            <code><keyword>function</keyword> <func>baz</func>() {
+                <keyword>return</keyword> <var>$qux</var>; <comment>// return a value</comment>
+                }</code>
+            <code><keyword>function</keyword> <func>xyzzy</func>(<var>$param1</var> = <lit>123</lit>) {
+                <comment>// variable $param1 is available</comment>
+                <comment>// if called without an argument, value of $param1 is 123</comment>
+                }</code>
+            <code><keyword>function</keyword> <func>waldo</func>(& <var>$param1</var>) {
+                <comment>// variable $param1 is available</comment>
+                <comment>// any change to it would also happen to the argument</comment>
+                }</code>
+            <h3>calling a function</h3>
+            <code><func>foo</func>();
+                <func>bar</func>(<lit>123</lit>, <string>'fred'</string>);
+                <var>$foo</var> = <func>baz</func>();
+                <func>xyzzy</func>(<lit>456</lit>);
+                <func>xyzzy</func>();
+                <func>waldo</func>(<var>$argument1</var>); <comment>// $argument1 may have been changed by this</comment></code>
+        </section>
+
+
+
+        <section>
+            <h2>arrays</h2>
+            <p>complex data type describing a collection of elements</p>
+            <h3>create</h3>
+            <code><var>$foo</var> = []; <comment>// empty array</comment>
+                <var>$bar</var> = [<lit>123</lit>,<string>'abc'</string>,<keyword>true</keyword>]; <comment>// with values</comment>
+                <var>$baz</var> = [<string>'xyz'</string> => <lit>123</lit>, <lit>3</lit> => <string>'abc'</string>];  <comment>// also specifying keys</comment></code>
+            <h3>add values</h3>
+            <code><var>$foo</var>[] = <string>'def'</string>; <comment>// under next available numeric key</comment>
+                <var>$bar</var>[<string>'xyz'</string>] = <string>'fred'</string>; <comment>// under a specific key</comment></code>
+            <h3>access values</h3>
+            <code><keyword>echo</keyword> <var>$foo</var>[<lit>0</lit>];
+                <keyword>echo</keyword> <var>$bar</var>[<string>'xyz'</string>];</code>
+            <h3>useful functions</h3>
+            <code><func>array_push</func>(); <func>array_pop</func>(); <func>array_shift</func>(); <func>array_unshift</func>(); <func>sort</func>(); <func>ksort</func>(); <func>asort</func>(); <func>usort</func>(); <func>rsort</func>(); <func>krsort</func>(); <func>arsort</func>(); <func>array_merge</func>(); <func>array_search</func>(); <func>array_key_exists</func>();</code>
+        </section>
+
+        <section>
+            <h2>useful functions</h2>
+            <div class="halved">
+                <div class="left">
+                    <code><keyword>echo</keyword> <string>'abc'</string>;
+                        <keyword>include</keyword> <string>'file.php'</string>;
+                        <keyword>require_once</keyword> <string>'file.php'</string>;
+                        <func>isset</func>(<var>$foo</var>);
+                        <func>empty</func>(<var>$foo</var>);
+                        <func>explode</func>(<string>','</string>, <string>'a,b,c'</string>);
+                        <func>implode</func>(<string>','</string>, <var>$array</var></var>);
+                        <func>count</func>(<var>$array</var>);</code>
+                </div>
+                <div class="right">
+                    <code><func>date</func>(<string>'Y'</string>);
+                        <func>time</func>();
+                        <func>fopen</func>(<string>'file'</string>, <string>'r'</string>);
+                        <func>substr</func>(<string>'abc'</string>, <lit>0</lit>, <lit>1</lit>);
+                        <func>str_replace</func>(<string>'a'</string>, <string>'x'</string>, <string>'abc'</string>);
+                        <func>trim</func>(<string>' abc '</string>);
+                        <func>die</func>();
+                        <func>exit</func>();</code>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+</body>
+</html>
