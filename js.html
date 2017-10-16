@@ -145,43 +145,43 @@
 <keyword>var</keyword> <var>foo</var> = <func>baz</func>();</code>
         </section>
 
-        <section>
-            <h2>Scope</h2>
-            <p>Scope determines the accessibility (visibility) of variables.</p>
-            <h3>global variables</h3>
-<code><keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;
-<comment>// variable foo available here</comment>
-<keyword>function</keyword> <func>bar</func>(){
-    <comment>// variable foo available here</comment>
-}
-<comment>// variable foo available here</comment></code>
-            <h3>local variables</h3>
-<code><keyword>function</keyword> <func>bar</func>(){
-    <keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;
-    <comment>// variable foo available here</comment>
-}
-<comment>// variable foo NOT available here</comment></code>
-            <h3>shadowing global variables</h3>
-            <p>Creating a local variable with the same name as global.</p>
-<code><keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;
-<comment>// variable foo available here with value 'asd'</comment>
-<keyword>function</keyword> <func>bar</func>(){
-    <keyword>var</keyword> <var>foo</var> = <string>'qwe'</string>;
-    <comment>// variable foo available here with value 'qwe'</comment>
-}
-bar();
-<comment>// variable foo available here with value 'asd'</comment>
-</code>
-<code><keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;
-<comment>// variable foo available here with value 'asd'</comment>
-<keyword>function</keyword> <func>bar</func>(){
-    <var>foo</var> = <string>'qwe'</string>;
-    <comment>// variable foo available here with value 'qwe'</comment>
-}
-bar();
-<comment>// variable foo available here with value 'qwe'</comment></code>
+        <!--<section>-->
+            <!--<h2>Scope</h2>-->
+            <!--<p>Scope determines the accessibility (visibility) of variables.</p>-->
+            <!--<h3>global variables</h3>-->
+<!--<code><keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;-->
+<!--<comment>// variable foo available here</comment>-->
+<!--<keyword>function</keyword> <func>bar</func>(){-->
+    <!--<comment>// variable foo available here</comment>-->
+<!--}-->
+<!--<comment>// variable foo available here</comment></code>-->
+            <!--<h3>local variables</h3>-->
+<!--<code><keyword>function</keyword> <func>bar</func>(){-->
+    <!--<keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;-->
+    <!--<comment>// variable foo available here</comment>-->
+<!--}-->
+<!--<comment>// variable foo NOT available here</comment></code>-->
+            <!--<h3>shadowing global variables</h3>-->
+            <!--<p>Creating a local variable with the same name as global.</p>-->
+<!--<code><keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;-->
+<!--<comment>// variable foo available here with value 'asd'</comment>-->
+<!--<keyword>function</keyword> <func>bar</func>(){-->
+    <!--<keyword>var</keyword> <var>foo</var> = <string>'qwe'</string>;-->
+    <!--<comment>// variable foo available here with value 'qwe'</comment>-->
+<!--}-->
+<!--bar();-->
+<!--<comment>// variable foo available here with value 'asd'</comment>-->
+<!--</code>-->
+<!--<code><keyword>var</keyword> <var>foo</var> = <string>'asd'</string>;-->
+<!--<comment>// variable foo available here with value 'asd'</comment>-->
+<!--<keyword>function</keyword> <func>bar</func>(){-->
+    <!--<var>foo</var> = <string>'qwe'</string>;-->
+    <!--<comment>// variable foo available here with value 'qwe'</comment>-->
+<!--}-->
+<!--bar();-->
+<!--<comment>// variable foo available here with value 'qwe'</comment></code>-->
 
-        </section>
+        <!--</section>-->
 
 
         <section>
